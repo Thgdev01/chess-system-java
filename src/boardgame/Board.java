@@ -65,4 +65,18 @@ public class Board {
 			return piece(position) != null;
 		}
 	}
+	
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Posição não está correta de acordo com o tabuleiro");
+		}
+		if (piece(position) == null){
+			return null;
+		}
+		
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getColumn()][position.getRow()] = null;
+		return aux;
+	}
 }
